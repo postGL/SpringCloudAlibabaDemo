@@ -10,6 +10,8 @@
 	<modules>
 		<module>shop-common</module>
 		<module>shop-user</module>
+		<module>shop-product</module>
+		<module>shop-order</module>
 	</modules>
 	<packaging>pom</packaging>
 
