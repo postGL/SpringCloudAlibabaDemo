@@ -2,10 +2,7 @@ package com.zbs.domain;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * description: Product 商品
@@ -13,7 +10,13 @@ import javax.persistence.Id;
  * author: zhangbs
  * version: 1.0
  */
-@Entity(name = "shop_product")
+
+/**
+ * @Entity(name=“xx”) 是给实体类取别名
+ * @Table(name=“yy”) 映射表名为yy，不加这个注解默认就是实体类名
+ */
+@Entity
+@Table(name = "shop_product")
 @Data
 public class Product {
 

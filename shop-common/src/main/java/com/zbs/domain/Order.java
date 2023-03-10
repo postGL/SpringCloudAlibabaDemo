@@ -2,10 +2,7 @@ package com.zbs.domain;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * description: Order 订单
@@ -13,7 +10,8 @@ import javax.persistence.Id;
  * author: zhangbs
  * version: 1.0
  */
-@Entity(name = "shop_order")
+@Entity
+@Table(name = "shop_order")
 @Data
 public class Order {
     @Id
