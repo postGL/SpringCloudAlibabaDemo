@@ -1,5 +1,7 @@
 package com.zbs.service;
 
+import com.zbs.domain.Product;
+
 /**
  * description: ProductService
  * date: 2023/3/7 20:33
@@ -7,4 +9,7 @@ package com.zbs.service;
  * version: 1.0
  */
 public interface ProductService {
+
+    Product getProductById(Integer pId);
+
 }
