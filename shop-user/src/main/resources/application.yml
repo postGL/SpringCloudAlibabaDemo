@@ -5,14 +5,15 @@ spring:
     name: service-user
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql:///spring-cloud-alibaba-demo?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    url: jdbc:mysql://localhost:3306/spring-cloud-alibaba-demo?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
     password: root
   jpa:
+    show-sql: true
     properties:
       hibernate:
         hbm2ddl:
-          # 不用自己创建数据库表，jpa帮我们创建表。没有则创建，有不创建
+          # 每次运行程序，没有表时会创建表，如果对象发生改变会更新表结构，原有数据不会清空，只会更新。
           auto: update
-        # 指定索引方式innodb
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+          # 指定索引方式innodb
+          dialect: org.hibernate.dialect.MySQL5InnoDBDialect
