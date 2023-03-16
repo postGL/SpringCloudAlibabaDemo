@@ -3,8 +3,6 @@ package com.zbs;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * description: OrderSpringBootApplication
@@ -17,11 +15,6 @@ import org.springframework.web.client.RestTemplate;
 public class OrderSpringBootApplication {
     public static void main(String[] args) {
         SpringApplication.run(OrderSpringBootApplication.class, args);
-    }
-
-    @Bean
-    public RestTemplate getRestTemplate() {
-        return new RestTemplate();
     }
 
 }
