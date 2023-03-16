@@ -6,7 +6,6 @@ import com.zbs.domain.Product;
 import com.zbs.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,12 +28,10 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @Autowired
-    private DiscoveryClient discoveryClient;
 
     /**
      * 下单
-     * 第三次：Ribbon负载均衡。
+     * 第四次：Ribbon负载均衡。
      * @param pid
      * @return
      */
@@ -43,7 +40,8 @@ public class OrderController {
         log.info("接收到{}号商品的下单请求，接下来调用商品微服务查询此商品信息", pid);
         // 调用商品微服务
         String url = "service-product";
-
+        // 1、代码可读性不行，写url；
+        // 2、编程风格不统一，有用@Autowired，有用RestTemplate
         Product product = restTemplate.getForObject("http://" + url + "/product/" + pid, Product.class);
         log.info("查询到{}号商品信息是：{}", pid, JSON.toJSONString(product));
         // 下单
@@ -58,6 +56,9 @@ public class OrderController {
         log.info("创建一个订单成功，订单是：{}", JSON.toJSONString(order1));
         return order1;
     }
+
+//    @Autowired
+//    private DiscoveryClient discoveryClient;
 
 //    /**
 //     * 下单
