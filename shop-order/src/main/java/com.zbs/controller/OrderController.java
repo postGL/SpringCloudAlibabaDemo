@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.zbs.domain.Order;
 import com.zbs.domain.Product;
 import com.zbs.service.OrderService;
+import com.zbs.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,10 +29,12 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private ProductService productService;
 
     /**
      * 下单
-     * 第四次：Ribbon负载均衡。
+     * 第五次：OpenFeign调用。
      * @param pid
      * @return
      */
@@ -39,10 +42,7 @@ public class OrderController {
     public Order order(@PathVariable("pid") Integer pid) {
         log.info("接收到{}号商品的下单请求，接下来调用商品微服务查询此商品信息", pid);
         // 调用商品微服务
-        String url = "service-product";
-        // 1、代码可读性不行，写url；
-        // 2、编程风格不统一，有用@Autowired，有用RestTemplate
-        Product product = restTemplate.getForObject("http://" + url + "/product/" + pid, Product.class);
+        Product product = productService.findByPid(pid);
         log.info("查询到{}号商品信息是：{}", pid, JSON.toJSONString(product));
         // 下单
         Order order = new Order();
@@ -56,6 +56,35 @@ public class OrderController {
         log.info("创建一个订单成功，订单是：{}", JSON.toJSONString(order1));
         return order1;
     }
+
+
+//    /**
+//     * 下单
+//     * 第四次：Ribbon负载均衡。
+//     * @param pid
+//     * @return
+//     */
+//    @RequestMapping("order/{pid}")
+//    public Order order(@PathVariable("pid") Integer pid) {
+//        log.info("接收到{}号商品的下单请求，接下来调用商品微服务查询此商品信息", pid);
+//        // 调用商品微服务
+//        String url = "service-product";
+//        // 1、代码可读性不行，写url；
+//        // 2、编程风格不统一，有用@Autowired，有用RestTemplate
+//        Product product = restTemplate.getForObject("http://" + url + "/product/" + pid, Product.class);
+//        log.info("查询到{}号商品信息是：{}", pid, JSON.toJSONString(product));
+//        // 下单
+//        Order order = new Order();
+//        order.setUid(1);
+//        order.setUsername("测试用户");
+//        order.setPid(product.getPid());
+//        order.setPname(product.getPname());
+//        order.setPprice(product.getPprice());
+//        order.setNumber(1);
+//        Order order1 = orderService.createOrder(order);
+//        log.info("创建一个订单成功，订单是：{}", JSON.toJSONString(order1));
+//        return order1;
+//    }
 
 //    @Autowired
 //    private DiscoveryClient discoveryClient;
