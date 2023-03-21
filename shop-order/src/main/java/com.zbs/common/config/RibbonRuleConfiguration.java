@@ -1,9 +1,9 @@
 package com.zbs.common.config;
 
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import com.netflix.loadbalancer.IRule;
+import com.netflix.loadbalancer.RandomRule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * description: RestTemplateConfiguration
@@ -12,12 +12,15 @@ import org.springframework.web.client.RestTemplate;
  * version: 1.0
  */
 @Configuration
-public class RestTemplateConfiguration {
+public class RibbonRuleConfiguration {
 
-    @LoadBalanced
+    /**
+     * 在这里定义Ribbon负载均衡的规则
+     * @return
+     */
     @Bean
-    public RestTemplate getRestTemplate() {
-        return new RestTemplate();
+    public IRule myRule(){
+        return new RandomRule();
     }
 
 }
