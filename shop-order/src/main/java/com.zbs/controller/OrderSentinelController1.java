@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Slf4j
-public class OrderSentinelController {
+public class OrderSentinelController1 {
 
     @Autowired
     private OrderService orderService;
