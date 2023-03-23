@@ -38,7 +38,6 @@ public class OrderSentinelController2 {
      * 定义当资源内部发生异常的时候的处理逻辑
      * blockHandler 定义当资源内部发生BlockException应该进入方法{捕获的是Sentinel定义的异常}
      * fallback 定义当资源内部发生了Throwable应该进入的方法
-     *
      * 避免代码臃肿，支持Class类
      * blockHandlerClass
      * fallbackClass
