@@ -57,7 +57,7 @@ public class OrderSentinelController2 {
     }
 
     /**
-     * fallback
+     * fallback（如果blockHandler没有拦住的话，则进入fallback，fallback范围更大，一般只写一个fallback就OK）
      * 要求：
      * 1、当前方法的返回值和参数要与原方法（加@SentinelResource注解的方法）一致
      * 2、但是允许在参数列表的最后加入一个参数BlockException，用来接收原方法中发生的异常

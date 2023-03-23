@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 自定义返回异常页面
  * description: ExceptionHandlerPage
  * date: 2023/3/23 15:47
  * author: zhangbs
