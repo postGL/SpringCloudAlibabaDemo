@@ -13,9 +13,10 @@ import javax.servlet.http.HttpServletRequest;
  * version: 1.0
  */
 @Component
-public class RequestOriginParserDefinition implements RequestOriginParser {
+public class RequestOriginParserConfig implements RequestOriginParser {
 
     /**
+     * Sentinel：授权规则
      * 区分来源：本质作用就是通过request域获取来源表数
      * 例如：app、pc
      * 然后交给流控应用进行匹配
