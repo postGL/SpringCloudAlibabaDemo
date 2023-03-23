@@ -1,4 +1,4 @@
-package com.zbs.hadler;
+package com.zbs.common.hadler;
 
 import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.BlockExceptionHandler;
 import com.alibaba.csp.sentinel.slots.block.BlockException;

@@ -1,4 +1,4 @@
-package com.zbs.fallback;
+package com.zbs.common.fallback;
 
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import lombok.extern.slf4j.Slf4j;

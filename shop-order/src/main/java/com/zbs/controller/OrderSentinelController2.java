@@ -1,8 +1,8 @@
 package com.zbs.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.zbs.fallback.BlockHandlerException;
-import com.zbs.fallback.FallbackException;
+import com.zbs.common.fallback.BlockHandlerException;
+import com.zbs.common.fallback.FallbackException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

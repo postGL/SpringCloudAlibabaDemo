@@ -1,4 +1,4 @@
-package com.zbs.hadler;
+package com.zbs.common.hadler;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
