@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * description: OrderController
@@ -23,8 +22,8 @@ import org.springframework.web.client.RestTemplate;
 public class OrderController {
 
     // restTemplate调用远程服务
-    @Autowired
-    private RestTemplate restTemplate;
+//    @Autowired
+//    private RestTemplate restTemplate;
 
     @Autowired
     private OrderService orderService;
@@ -44,19 +43,26 @@ public class OrderController {
         // 调用商品微服务
         Product product = productService.findByPid(pid);
         log.info("查询到{}号商品信息是：{}", pid, JSON.toJSONString(product));
-        // 下单
+
+        // 测试容错类
         Order order = new Order();
+        if (-100 == product.getPid()) {
+            order.setOid(-100L);
+            order.setPname("下单失败");
+            return order;
+        }
+
+        // 下单
         order.setUid(1);
         order.setUsername("测试用户");
         order.setPid(product.getPid());
         order.setPname(product.getPname());
         order.setPprice(product.getPprice());
         order.setNumber(1);
-        Order order1 = orderService.createOrder(order);
-        log.info("创建一个订单成功，订单是：{}", JSON.toJSONString(order1));
-        return order1;
+        order = orderService.createOrder(order);
+        log.info("创建一个订单成功，订单是：{}", JSON.toJSONString(order));
+        return order;
     }
-
 
 //    /**
 //     * 下单

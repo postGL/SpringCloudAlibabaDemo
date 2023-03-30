@@ -1,6 +1,7 @@
 package com.zbs.service;
 
 import com.zbs.domain.Product;
+import com.zbs.service.fallback.ProductServiceFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * version: 1.0
  */
 // Product product = restTemplate.getForObject("http://service-product/product/" + pid, Product.class);
-@FeignClient(value = "service-product")
+// value用于指定调用nacos下的哪个微服务
+// fallback用于指定接口的容错类
+@FeignClient(
+        value = "service-product",
+        fallback = ProductServiceFallback.class
+)
 public interface ProductService {
 
     // 调Rest接口。@FeignClient+@GetMapping 就是一个完整的请求路径 http://serviceproduct/product/{pid}
