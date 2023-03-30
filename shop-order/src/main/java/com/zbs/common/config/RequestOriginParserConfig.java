@@ -2,7 +2,6 @@ package com.zbs.common.config;
 
 import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.RequestOriginParser;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,9 +25,10 @@ public class RequestOriginParserConfig implements RequestOriginParser {
     @Override
     public String parseOrigin(HttpServletRequest request) {
         String serviceName = request.getParameter("serviceName");
-        if (ObjectUtils.isEmpty(serviceName)){
-            throw new RuntimeException("serviceName is empty");
-        }
+        // 为了测试其他功能，授权规则serviceName先去掉
+//        if (ObjectUtils.isEmpty(serviceName)){
+//            throw new RuntimeException("serviceName is empty");
+//        }
         return serviceName;
     }
 }
