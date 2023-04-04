@@ -27,9 +27,9 @@ spring:
            # - SetStatus=250
            # - Log=true,false
         - id: order_route
-            uri: lb://service-order
-            order: 1
-            predicates:
-              - Path=/order-server/**
-            filters:
-              - StripPrefix=1
+          uri: lb://service-order
+          order: 1
+          predicates:
+            - Path=/order-server/**
+          filters:
+            - StripPrefix=1
