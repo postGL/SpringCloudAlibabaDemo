@@ -35,4 +35,29 @@ public class ProductController {
         return product;
     }
 
+    /**
+     * 根据规则
+     * /product/api1/demo1、/product/api1/demo2、/product/api2/demo1 被限流
+     * /product/api1/demo2 不被限流
+     */
+    @RequestMapping("/product/api1/demo1")
+    public String demo1() {
+        return "demo1";
+    }
+
+    @RequestMapping("/product/api1/demo2")
+    public String demo2() {
+        return "demo2";
+    }
+
+    @RequestMapping("/product/api2/demo1")
+    public String demo3() {
+        return "demo3";
+    }
+
+    @RequestMapping("/product/api2/demo2")
+    public String demo4() {
+        return "demo4";
+    }
+
 }
