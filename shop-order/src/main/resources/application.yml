@@ -39,3 +39,9 @@ spring:
 feign:
   sentinel:
     enabled: true
+
+# rocketMQ
+rocketmq:
+  name-server: 127.0.0.1:9876 #rocketMQ服务的地址
+  producer:
+    group: shop-order # 生产者组
