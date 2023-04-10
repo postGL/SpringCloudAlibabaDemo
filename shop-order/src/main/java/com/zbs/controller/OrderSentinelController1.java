@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 /**
  * description: OrderController
  * date: 2023/3/7 20:32
@@ -25,10 +27,10 @@ public class OrderSentinelController1 {
     @Autowired
     private OrderService orderService;
 
-    @Autowired
+    @Resource
     private ProductService productService;
 
-    @Autowired
+    @Resource
     private RocketMQTemplate rocketMQTemplate;
 
     /**
