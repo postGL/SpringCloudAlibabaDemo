@@ -57,7 +57,10 @@ public class MessageTypeTest {
     //单向消息
     @Test
     public void testOneWay() {
-        rocketMQTemplate.sendOneWay("test-topic-one-way", "这是一条单向消息");
+        for (int i = 0; i < 10; i++) {
+            // sendOneWayOrderly：order保证在一个消息messageQueue中加入，顺序消费
+            rocketMQTemplate.sendOneWayOrderly("test-topic-one-way", "这是一条单向消息","XXX");
+        }
     }
 
 }
