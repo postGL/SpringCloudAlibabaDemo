@@ -7,5 +7,9 @@ spring:
         server-addr: 127.0.0.1:8848
         namespace: 54e061f9-75c2-4150-9fbd-eb2f42d788d8
         file-extension: yaml
+        shared-configs[0]:
+          data-id: application.yaml
+          group: DEFAULT_GROUP
+          refresh: true
   profiles:
     active: dev
