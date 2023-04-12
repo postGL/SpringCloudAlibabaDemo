@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * description: OrderController
+ * description: OrderController sentinel 限流、降级、授权、系统 场景测试
  * date: 2023/3/7 20:32
  * author: zhangbs
  * version: 1.0
