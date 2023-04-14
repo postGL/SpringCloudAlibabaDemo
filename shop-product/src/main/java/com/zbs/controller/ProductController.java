@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -33,6 +34,12 @@ public class ProductController {
         Product product = productService.getProductById(pId);
         log.info("商品信息查询成功，商品为：{}", JSON.toJSONString(product));
         return product;
+    }
+
+    @RequestMapping("/product/reduceInventory")
+    public void reduceInventory(@RequestParam("pid") Integer pid, @RequestParam("number") int number) {
+        log.info("扣减{}号的订单商品库存", pid);
+        productService.reduceInventory(pid, number);
     }
 
     /**

@@ -12,4 +12,6 @@ public interface ProductService {
 
     Product getProductById(Integer pId);
 
+    void reduceInventory(Integer pid, int num);
+
 }

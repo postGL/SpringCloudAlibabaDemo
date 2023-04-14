@@ -1,7 +1,6 @@
 spring:
   application:
-    name: service-product
-  # service-product项目，nacos信息
+    name: service-order
   cloud:
     nacos:
       config:
@@ -9,18 +8,18 @@ spring:
         namespace: 54e061f9-75c2-4150-9fbd-eb2f42d788d8
         group: DEFAULT_GROUP
         file-extension: yaml
-        shared-configs[0]:
-          data-id: application.yaml
-          group: DEFAULT_GROUP
-          refresh: true
+#        shared-configs[0]:
+#          data-id: application.yaml.yaml
+#          group: DEFAULT_GROUP
+#          refresh: true
 
   profiles:
     active: dev
+
 seata:
   enabled: true
   enable-auto-data-source-proxy: true
   tx-service-group: ${spring.application.name} #此处与上面config.txt中的vgroupMapping一致
-  # seata nacos信息
   registry:
     type: nacos
     nacos:

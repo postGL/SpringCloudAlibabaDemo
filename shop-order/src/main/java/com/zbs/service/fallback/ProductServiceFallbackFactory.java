@@ -29,6 +29,11 @@ public class ProductServiceFallbackFactory implements FallbackFactory<ProductSer
                 product.setPname("远程调用商品微服务出现了异常，进入了容错逻辑。");
                 return product;
             }
+
+            @Override
+            public void reduceInventory(Integer pid, int number) {
+                log.error("容错异常信息：{}", throwable.getMessage(), throwable);
+            }
         };
     }
 
