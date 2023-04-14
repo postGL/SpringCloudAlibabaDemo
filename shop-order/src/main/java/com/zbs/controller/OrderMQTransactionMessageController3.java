@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * description: OrderController
+ * description: OrderMQTransactionMessageController3 MQ事务消息
  * date: 2023/3/7 20:32
  * author: zhangbs
  * version: 1.0
  */
 @RestController
 @Slf4j
-public class OrderController3 {
+public class OrderMQTransactionMessageController3 {
 
     @Autowired
     private OrderServiceImpl3 orderServiceImpl3;
@@ -33,7 +33,7 @@ public class OrderController3 {
      * @param pid
      * @return
      */
-    @RequestMapping("order/tx/{pid}")
+    @RequestMapping("order/mq/{pid}")
     public Order order(@PathVariable("pid") Integer pid) {
         // 调用商品微服务
         Product product = productService.findByPid(pid);
