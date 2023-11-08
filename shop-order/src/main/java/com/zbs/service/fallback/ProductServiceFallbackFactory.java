@@ -30,10 +30,10 @@ public class ProductServiceFallbackFactory implements FallbackFactory<ProductSer
                 return product;
             }
 
-            @Override
-            public void reduceInventory(Integer pid, int number) {
-                log.error("容错异常信息：{}", throwable.getMessage(), throwable);
-            }
+//            @Override
+//            public void reduceInventory(Integer pid, int number) {
+//                log.error("容错异常信息：{}", throwable.getMessage(), throwable);
+//            }
         };
     }
 

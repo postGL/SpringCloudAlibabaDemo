@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.zbs.dao.OrderDao;
 import com.zbs.domain.Order;
 import com.zbs.domain.Product;
+import com.zbs.rpc.RemoteProductService;
 import com.zbs.service.ProductService;
 import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,9 @@ public class OrderSeataServiceImpl {
     private ProductService productService;
 
     @Resource
+    private RemoteProductService remoteProductService;
+
+    @Resource
     private RocketMQTemplate rocketMQTemplate;
 
     @GlobalTransactional // Seata全局事务控制
@@ -52,7 +56,7 @@ public class OrderSeataServiceImpl {
         log.info("创建一个订单成功，订单是：{}", JSON.toJSONString(order));
 
         // 3、扣库存
-        productService.reduceInventory(pid, order.getNumber());
+        remoteProductService.reduceInventory(pid, order.getNumber());
 
         // 4、下单成功后，将消息放到MQ中
         // 参数1：指定topic、参数2：指定消息体

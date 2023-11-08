@@ -20,6 +20,7 @@
 		<module>shop-product</module>
 		<module>shop-order</module>
 		<module>api-gateway</module>
+		<module>shop-product-api</module>
 	</modules>
 
 	<!--依赖版本的锁定-->
